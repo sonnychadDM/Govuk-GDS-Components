@@ -1,12 +1,16 @@
 import { LightningElement, track, api } from 'lwc';
 
-class ColumnItem {
-    Name;
-    URL;
-} 
+class MetaLinkItem {
+    metaLinkName;
+    metaLinkURL;
+    constructor(metaLinkName, metaLinkURL) {
+        this.metaLinkName = metaLinkName;
+        this.metaLinkURL = metaLinkURL;
+    }
+}
 
 export default class GovFooterRebrandDM extends LightningElement {
-     // Secondary Navigation Input variables
+    // Secondary Navigation Input variables
     @api secondaryNavigationRequired = false;
     @api singleColumnHeader = "";
     @api doubleColumnHeader = "";
@@ -17,7 +21,7 @@ export default class GovFooterRebrandDM extends LightningElement {
 
     // Links with Meta Information Input variables
     @api metalinkNames = "";
-    @api metalinkURL = "";
+    @api metalinkURLs = "";
     @api metalinksRequired = false;
     @api visuallyHiddenLinksText = '';
 
@@ -34,60 +38,39 @@ export default class GovFooterRebrandDM extends LightningElement {
     @track finalMetaLinkData = [];
     @track isMetalinksPresent = false;
     @track isNavLLinksPresent = false;
+    @track finalSingleColumnItems = [];
+    @track finalDoubleColumnItems = [];
 
 
     connectedCallback(){
-   
-        let metalinkNameList = this.metalinkNames? this.metalinkNames.split(';') : [];
-        let metalinkURLList = this.metalinkURL ? this.metalinkURL.split(';') : [];
 
-        //array to store multiple metalinks and URLs
-        let metalinkObj = {
-        metaLinkName :'',
-        metaLinkURL : ''
-        }
-
-        //This loop will save the array of metalinks and URLs to iterate on the UI
-        for(let i=0; i<metalinkNameList.length;i++){
-            metalinkObj.metaLinkName = metalinkNameList[i];
-            metalinkObj.metaLinkURL = metalinkURLList[i];
-            this.finalMetaLinkData.push(metalinkObj);
-            metalinkObj = {
-                metaLinkName :'',
-                metaLinkURL : ''
-            }
-        }
-
-        this.handleLinksandNames()
+        this.handleColumnItems();
+        this.handleMetaLinks();
 
     }
 
-    finalSingleColumnItems = [];
-    finalDoubleColumnItems = [];
-    handleLinksandNames() {
+    handleColumnItems() {
+        let singleColumnNameList = this.handleSemicolonSplit(this.singleColumnNames);
+        let singleColumnURLList = this.handleSemicolonSplit(this.singleColumnURLs);
+        let doubleColumnNameList = this.handleSemicolonSplit(this.doubleColumnNames);
+        let doubleColumnURLList = this.handleSemicolonSplit(this.doubleColumnURLs);
 
-        let singleColumnItem = new ColumnItem;
-        let doubleColumnItem = new ColumnItem;
+        this.finalSingleColumnItems = this.handleMetaLinkItems(singleColumnNameList, singleColumnURLList);
+        this.finalDoubleColumnItems = this.handleMetaLinkItems(doubleColumnNameList, doubleColumnURLList);
 
-        let singleColumnNameList = this.singleColumnNames ? this.singleColumnNames.split(';') : [];
-        let singleColumnURLList = this.singleColumnURLs ? this.singleColumnURLs.split(';') : [];
-        let doubleColumnNameList = this.doubleColumnNames ? this.doubleColumnNames.split(';') : [];
-        let doubleColumnURLList = this.doubleColumnURLs ? this.doubleColumnURLs.split(';') : [];
+    }
 
+    handleMetaLinks() {
+        let metalinkNameList = this.handleSemicolonSplit(this.metalinkNames);
+        let metalinkURLList = this.handleSemicolonSplit(this.metalinkURLs);
+        this.finalMetaLinkData = this.handleMetaLinkItems(metalinkNameList, metalinkURLList);
+    }
 
-        //iterate for single columns
-        for(let i=0; i<singleColumnNameList.length; i++) {
-            singleColumnItem.Name = singleColumnNameList[i];
-            singleColumnItem.URL = singleColumnURLList[i];
-            this.finalSingleColumnItems.push(singleColumnItem);
-            singleColumnItem = new ColumnItem;
-        }
+    handleSemicolonSplit(string) {
+        return string ? string.split(';') : [];
+    }
 
-        for(let i=0; i<doubleColumnNameList.length; i++) {
-            doubleColumnItem.Name = doubleColumnNameList[i];
-            doubleColumnItem.URL = doubleColumnURLList[i];
-            this.finalDoubleColumnItems.push(doubleColumnItem);
-            doubleColumnItem = new ColumnItem;
-        }
+    handleMetaLinkItems(metaNames, metaLinks) {
+        return metaNames.map((metaName, i) => new MetaLinkItem(metaName, metaLinks[i])); 
     }
 }

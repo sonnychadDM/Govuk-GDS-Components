@@ -13,7 +13,7 @@
             <property name="metalinksRequired" type="Boolean" label="Enable Footer with links to Meta information" description="Check the checkbox if you want footer with links as meta information and fill below 2 fields."/>
             <property name="crestRequired" type="Boolean" label="Enable Footer with Crown Logo" description="Check the checkbox if you want footer with Crown Logo"/>
             <property name="metalinkNames" type="String" label="Meta Information Link Names" description="Please provide semicolon list of the display names to the links"/>
-            <property name="metalinkURL" type="String" label="Meta Information Link URL's" description="Please provide semicolon list of the links in same order corresponding to the above mentioned names"/>
+            <property name="metalinkURLs" type="String" label="Meta Information Link URL's" description="Please provide semicolon list of the links in same order corresponding to the above mentioned names"/>
             <property name="secondaryNavigationRequired" type="Boolean" label="Enable Footer Secondary Navigation link" description="Check the checkbox if you want a footer with titled columns and links below them"></property>
             <property name="doubleColumnHeader" type="String" label="Double Column list header" description="Please provide the relevant header for the double column list in the footer"></property>
             <property name="singleColumnHeader" type="String" label="Single Column list header" description="Please provide the relevant header for the single column list in the footer"></property>
