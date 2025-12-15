@@ -62,8 +62,7 @@
 
 .govuk-footer__copyright-logo{
     display:inline-block;min-width:125px;padding-top:112px;
-    background-image:url(/sfsites/c/resource/digitalmodus__govuk_crest_rebrand);
-    background-repeat:no-repeat;
+    background-image: url(/sfsites/c/resource/govuk_crest_rebrand); /* namespace__govuk_crest_rebrand */    background-repeat:no-repeat;
     background-position:50% 0;
     background-size:125px 102px;
     text-align:center;

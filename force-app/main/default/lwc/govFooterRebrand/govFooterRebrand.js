@@ -1,3 +1,7 @@
+/**
+ * Component Name: Gov UK Footer Rebrand
+ **/
+
 import { LightningElement, track, api } from 'lwc';
 
 class MetaLinkItem {
@@ -9,7 +13,7 @@ class MetaLinkItem {
     }
 }
 
-export default class GovFooterRebrandDM extends LightningElement {
+export default class GovFooterRebrand extends LightningElement {
     // Secondary Navigation Input variables
     @api secondaryNavigationRequired = false;
     @api singleColumnHeader = "";
