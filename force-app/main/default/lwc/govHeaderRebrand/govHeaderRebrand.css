@@ -60,14 +60,3 @@ a:hover {
     text-underline-offset: 5px;
 }
 
-.govuk-template--rebranded {
-    margin-bottom: 0;
-    padding-top: 16px;
-    padding-bottom: 12px;
-}
-
-.govuk-template--rebranded .govuk-header__logo {
-    margin-bottom: 0;
-    padding-top: 16px;
-    padding-bottom: 12px;
-}
