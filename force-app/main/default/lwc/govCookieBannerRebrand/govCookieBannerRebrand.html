@@ -1,0 +1,48 @@
+<template>
+    <c-gov-c-s-s-provider></c-gov-c-s-s-provider>
+    <div class="govuk-cookie-banner" data-nosnippet role="region" aria-label="Cookies on {label}">
+        <div class="govuk-cookie-banner__message govuk-width-container">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds">
+                    <h2 class="govuk-cookie-banner__heading govuk-heading-m">{label}</h2>
+                    <div class="govuk-cookie-banner__content">
+                        <lightning-formatted-rich-text value={bannerContent}></lightning-formatted-rich-text>
+                    </div>
+                </div>
+            </div>
+            <div class="govuk-button-group">
+                <button type="button" class="govuk-button" data-module="govuk-button">{acceptLabel}</button>
+                <button type="button" class="govuk-button" data-module="govuk-button">{rejectLabel}</button>
+                <a class="govuk-link" href="#">View cookies</a>
+            </div>
+        </div>
+        <div class="govuk-cookie-banner__message govuk-width-container" role="alert" hidden>
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds">
+                    <div class="govuk-cookie-banner__content">
+                        <p class="govuk-body">You’ve accepted analytics cookies. You can <a class="govuk-link" href="#">change your cookie settings</a> at any time.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="govuk-button-group">
+                <button type="button" class="govuk-button" data-module="govuk-button">
+                Hide cookie message
+                </button>
+            </div>
+        </div>
+  <div class="govuk-cookie-banner__message govuk-width-container" role="alert" hidden>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <div class="govuk-cookie-banner__content">
+          <p class="govuk-body">You’ve rejected analytics cookies. You can <a class="govuk-link" href="#">change your cookie settings</a> at any time.</p>
+        </div>
+      </div>
+    </div>
+    <div class="govuk-button-group">
+      <button type="button" class="govuk-button" data-module="govuk-button">
+        Hide cookie message
+      </button>
+    </div>
+  </div>
+</div>
+</template>

@@ -10,7 +10,7 @@
     </targets>
     <targetConfigs>
         <targetConfig targets="lightningCommunity__Default">
-            <property name="serviceURL" type="String" label="Service Navigation URL" description="The Navigation URL for the given Service, include https:// in starting of a custom url" default="#"/>
+            <property name="serviceURL" type="String" label="Header Link URL" description="URL of navigation link associated with Header. Use full https:// format. Normally returns user to service home page" default="#"/>
         </targetConfig>
     </targetConfigs>
 </LightningComponentBundle>
